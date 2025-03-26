@@ -38,6 +38,13 @@ const insertAMovie = async (req, res) => {
 }
 
 const modifyAMovie = async (req, res) => {
+  //#swagger.tags = ['Movies']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Update a movie based on id',
+      required: true,
+      schema: { $ref: '#/definitions/Movie' }
+  } */
   try{
     const movieId = req.params.id
     const movieData = req.body
@@ -53,6 +60,13 @@ const modifyAMovie = async (req, res) => {
 }
 
 const removeAMovie = async (req, res) =>{
+  //#swagger.tags = ['Movies']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Delete a movie from list',
+      required: true,
+      schema: { $ref: '#/definitions/Movie' }
+  } */
   const deletedMovie = await moviesModel.deleteAMovie(req.params.id);
   res.setHeader('Content-Type', 'application/json');
   
