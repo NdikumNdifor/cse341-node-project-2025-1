@@ -8,7 +8,7 @@ validate.createMovieRules = () => {
   return [
       // Title is required and must be a string
       body("title")
-          .isString()
+          .isString().withMessage('Title must be a string.')
           .trim()
           .escape()
           .notEmpty()
@@ -18,7 +18,7 @@ validate.createMovieRules = () => {
 
       // Director is required and must be a string
       body("director")
-          .isString()
+          .isString().withMessage("Director must be a string.")
           .trim()
           .escape()
           .notEmpty()
@@ -36,7 +36,7 @@ validate.createMovieRules = () => {
 
       // Genre is required and must be a string
       body("genre")
-          .isString()
+          .isString().withMessage("Genre must be a string.")
           .trim()
           .notEmpty()
           .withMessage("Please enter the genre.")
