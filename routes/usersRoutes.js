@@ -8,24 +8,24 @@ const utilities = require('../utilities/validation')
 router.use('/', require('./swagger'))
 
 // Routes to get all user
-router.get('/users', moviesController.listAllUsers)
+router.get('/genres', moviesController.listAllUsers)
 
 // Routes to add a new user
-router.post('/users', 
+router.post('/genres', 
     utilities.createUserRules(),
     utilities.checkCreateUserData, 
     moviesController.insertUser
 )
 
 // Route to update a user
-router.put('/users/:id', 
+router.put('/genres/:id', 
     utilities.createUserRules(),
     utilities.checkCreateUserData, 
     moviesController.modifyAUser
 )
 
 // Route to delete a user
-router.delete('/users/:id', moviesController.removeAUser)
+router.delete('/genres/:id', moviesController.removeAUser)
 
 
 module.exports = router
