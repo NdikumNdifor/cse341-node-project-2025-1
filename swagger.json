@@ -20,17 +20,6 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "List all movies",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Movie"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -152,25 +141,14 @@
         }
       }
     },
-    "/users": {
+    "/genres": {
       "get": {
         "tags": [
-          "Users"
+          "Genres"
         ],
         "description": "",
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "List all users",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -183,7 +161,7 @@
       },
       "post": {
         "tags": [
-          "Users"
+          "Genres"
         ],
         "description": "",
         "produces": [
@@ -193,10 +171,10 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Add a user to list",
+            "description": "Add a genres to list",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Genre"
             }
           }
         ],
@@ -210,10 +188,10 @@
         }
       }
     },
-    "/users/{id}": {
+    "/genres/{id}": {
       "put": {
         "tags": [
-          "Users"
+          "Genres"
         ],
         "description": "",
         "produces": [
@@ -229,10 +207,10 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Update a user based on id",
+            "description": "Update a genre based on id",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Genre"
             }
           }
         ],
@@ -250,7 +228,7 @@
       },
       "delete": {
         "tags": [
-          "Users"
+          "Genres"
         ],
         "description": "",
         "produces": [
@@ -269,7 +247,7 @@
             "description": "Delete a user from list",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Genre"
             }
           }
         ],

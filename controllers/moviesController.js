@@ -1,15 +1,9 @@
-const {moviesModel} = require('../models/moviesModel')
+const movieModel = require('../models/moviesModel')
 
 const listAllMovies = async (req, res) => {
   //#swagger.tags = ['Movies']
-  /* #swagger.parameters['body'] = {
-      in: 'body',
-      description: 'List all movies',
-      required: true,
-      schema: { $ref: '#/definitions/Movie' }
-  } */
   try {
-    const movies = await moviesModel.getAllMovies()
+    const movies = await movieModel.getAllMovies()
     res.setHeader('Content-Type', 'application/json')
     res.status(200).json(movies)
   } catch (err) {
@@ -20,15 +14,9 @@ const listAllMovies = async (req, res) => {
 
 const insertAMovie = async (req, res) => {
   //#swagger.tags = ['Movies']
-  /* #swagger.parameters['body'] = {
-      in: 'body',
-      description: 'Add a movie to list',
-      required: true,
-      schema: { $ref: '#/definitions/Movie' }
-  } */
   try{
     const objectData = req.body
-    const movie = await moviesModel.addASingleMovie(objectData);
+    const movie = await movieModel.addASingleMovie(objectData);
     res.setHeader('Content-Type', 'application/json')
     res.status(201).json({message:'You successfully created a new movie', id: movie._id})
   }catch(err){
@@ -39,19 +27,13 @@ const insertAMovie = async (req, res) => {
 
 const modifyAMovie = async (req, res) => {
   //#swagger.tags = ['Movies']
-  /* #swagger.parameters['body'] = {
-      in: 'body',
-      description: 'Update a movie based on id',
-      required: true,
-      schema: { $ref: '#/definitions/Movie' }
-  } */
   try{
     const movieId = req.params.id
     const movieData = req.body
     if(!movieData.title || !movieData.director|| !movieData.releaseYear || !movieData.genre || !movieData.rating || !movieData.duration || !movieData.cast){
       throw new Error('All the fields must be included')
     }
-    const updatedMovie = await moviesModel.updateAMovie(movieId, movieData)
+    const updatedMovie = await movieModel.updateAMovie(movieId, movieData)
     res.setHeader('Content-Type', 'application/json')
     res.status(201).json({message:'Movie was updated succesfully', id: updatedMovie._id})
   }catch(err) {
@@ -61,13 +43,7 @@ const modifyAMovie = async (req, res) => {
 
 const removeAMovie = async (req, res) =>{
   //#swagger.tags = ['Movies']
-  /* #swagger.parameters['body'] = {
-      in: 'body',
-      description: 'Delete a movie from list',
-      required: true,
-      schema: { $ref: '#/definitions/Movie' }
-  } */
-  const deletedMovie = await moviesModel.deleteAMovie(req.params.id);
+  const deletedMovie = await movieModel.deleteAMovie(req.params.id);
   res.setHeader('Content-Type', 'application/json');
   
   if (deletedMovie.error) {

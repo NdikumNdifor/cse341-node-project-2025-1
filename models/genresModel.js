@@ -1,7 +1,7 @@
 const {userModel} = require('./movieSchema-model')
 const { ObjectId } = require('mongodb');
 
-const getAllUsers = async () => {
+const getAllGenres = async () => {
   try {
     const result = await userModel.find()
     if (!result || result.length === 0) {
@@ -13,7 +13,7 @@ const getAllUsers = async () => {
   }
 }
 
-const addASingleUser = async (objectData) => {
+const addASingleGenre = async (objectData) => {
   try{
     const {genreName, description, popularMovies, subGenres  } = objectData
     if(!genreName || !description || !popularMovies || !subGenres){
@@ -28,7 +28,7 @@ const addASingleUser = async (objectData) => {
 }
 
 
-const updateAUser = async (userId, userData) => {
+const updateAGenre = async (userId, userData) => {
   try{
     if(!ObjectId.isValid(userId)){
       throw new Error('Your movie ID is incorrect')
@@ -51,7 +51,7 @@ const updateAUser = async (userId, userData) => {
   }
 }
 
-const deleteAUser = async (userId) => {
+const deleteAGenre = async (userId) => {
   try{
     if(!ObjectId.isValid(userId)){
       throw new Error('No contact found with the given ID')
@@ -70,4 +70,4 @@ const deleteAUser = async (userId) => {
   }
 }
 
-module.exports = { userModel, getAllUsers, addASingleUser, updateAUser, deleteAUser}
+module.exports = { userModel, getAllGenres, addASingleGenre, updateAGenre, deleteAGenre}
