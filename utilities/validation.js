@@ -2,7 +2,7 @@ const { body, validationResult } = require("express-validator")
 const validate = {}
 
 /*  **********************************
-*  Registration Data Validation Rules
+*  Movies Data Validation Rules
 * ********************************* */
 validate.createMovieRules = () => {
   return [
@@ -82,7 +82,65 @@ validate.checkCreateMovieData = (req, res, next) => {
     errors: extractedErrors,
   })
 }
-  
+
+
+/* **********************************
+ *  User Data Validation Rules
+ * ********************************* */
+validate.createUserRules = () => {
+  return [
+    // genreName is required and must be a string
+    body("genreName")
+      .isString().withMessage("Genre name must be a string.")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Please provide a genre name.")
+      .isLength({ min: 2 })
+      .withMessage("Genre name must be at least 2 characters long."),
+
+    // description is required and must be a string
+    body("description")
+      .isString().withMessage("Description must be a string.")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Please provide a description.")
+      .isLength({ min: 10 })
+      .withMessage("Description must be at least 10 characters long."),
+
+    // popularMovies should be an array of strings
+    body("popularMovies")
+      .isArray({ min: 1 })
+      .withMessage("Please provide at least one popular movie.")
+      .custom((value) => value.every(m => typeof m === "string"))
+      .withMessage("Each popular movie must be a string."),
+
+    // subGenres should be an array of strings
+    body("subGenres")
+      .isArray({ min: 1 })
+      .withMessage("Please provide at least one sub-genre.")
+      .custom((value) => value.every(s => typeof s === "string"))
+      .withMessage("Each sub-genre must be a string."),
+  ];
+};
+
+/* ******************************
+ * Check data and return errors or continue 
+ * ***************************** */
+validate.checkCreateUserData = (req, res, next) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    return next();
+  }
+  const extractedErrors = [];
+  errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }));
+
+  return res.status(400).json({
+    errors: extractedErrors,
+  });
+};
+ 
 module.exports = validate;
   
 
