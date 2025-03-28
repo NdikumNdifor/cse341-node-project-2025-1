@@ -1,0 +1,173 @@
+// LOCALHOST
+### Get all movies
+GET http://localhost:3000/movies
+Accept: application/json
+
+### Add a contacts to collection
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "title": "Training Day",
+  "director": "Antoine Fuqua",
+  "releaseYear": 2001,
+  "genre": "Crime, Thriller",
+  "rating": 7.7,
+  "duration": 122,
+  "cast": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"]
+}
+
+### Modify a contact
+PUT http://localhost:3000/movies/67defd30b1ac9fc64c5831f2
+Content-Type: application/json
+
+{
+  "title": "Testing my put endpoint",
+  "director": "Antoine Fuqua",
+  "releaseYear": 2001,
+  "genre": "Crime, Thriller",
+  "rating": 7.7,
+  "duration": 122,
+  "cast": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"]
+}
+
+### Remove a contact from collection
+DELETE http://localhost:3000/movies/67defd30b1ac9fc64c5831f2 
+
+
+// PRODUCTION
+### Get all contacts
+GET https://cse341-node-project-2025-1.onrender.com/movies
+Accept: application/json
+
+### Add a contacts to collection
+POST https://cse341-node-project-2025-1.onrender.com/movies
+Content-Type: application/json
+
+{
+  "title": "Training Day",
+  "director": "Antoine Fuqua",
+  "releaseYear": 2001,
+  "genre": "Crime, Thriller",
+  "rating": 7.7,
+  "duration": 122,
+  "cast": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"]
+}
+
+### Modify a contact
+PUT https://cse341-node-project-2025-1.onrender.com/movies/67defd30b1ac9fc64c5831f2
+Content-Type: application/json
+
+{
+  "title": "Testing my put endpoint",
+  "director": "Antoine Fuqua",
+  "releaseYear": 2001,
+  "genre": "Crime, Thriller",
+  "rating": 7.7,
+  "duration": 122,
+  "cast": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"]
+}
+
+### Remove a contact from collection
+DELETE https://cse341-node-project-2025-1.onrender.com/movies/67defd30b1ac9fc64c5831f2
+
+
+
+
+## ENDPOINTS FOR GENRES COLLECTION
+
+// LOCALHOST
+
+### Get all genres
+GET http://localhost:3000/genres
+Accept: application/json
+
+### Add a genre to collection
+POST http://localhost:3000/genres
+Content-Type: application/json
+
+{
+  "genreName": "Action",
+  "description": "Movies with high energy, stunts, and intense sequences.",
+  "popularMovies": [
+    "The Dark Knight",
+    "Mad Max: Fury Road",
+    "John Wick"
+  ],
+  "subGenres": [
+    "Martial Arts",
+    "Superhero",
+    "Adventure"
+  ]
+}
+
+### Modify a genres
+PUT http://localhost:3000/movies/67defd30b1ac9fc64c5831f2
+Content-Type: application/json
+
+{
+  "genreName": "Action Action Action",
+  "description": "Movies with high energy, stunts, and intense sequences.",
+  "popularMovies": [
+    "The Dark Knight",
+    "Mad Max: Fury Road",
+    "John Wick"
+  ],
+  "subGenres": [
+    "Martial Arts",
+    "Superhero",
+    "Adventure"
+  ]
+}
+
+### Remove a genre from collection
+DELETE http://localhost:3000/genres/67defd30b1ac9fc64c5831f2 
+
+
+// PRODUCTION
+// LOCALHOST
+
+// Get all genres
+GET https://cse341-node-project-2025-1.onrender.com/genres
+Accept: application/json
+
+### Add a genres to collection
+POST https://cse341-node-project-2025-1.onrender.com/genres
+Content-Type: application/json
+
+{
+  "genreName": "Action",
+  "description": "Movies with high energy, stunts, and intense sequences.",
+  "popularMovies": [
+    "The Dark Knight",
+    "Mad Max: Fury Road",
+    "John Wick"
+  ],
+  "subGenres": [
+    "Martial Arts",
+    "Superhero",
+    "Adventure"
+  ]
+}
+
+### Modify a genre
+PUT https://cse341-node-project-2025-1.onrender.com/genres/67defd30b1ac9fc64c5831f2
+Content-Type: application/json
+
+{
+  "genreName": "Action Action Action",
+  "description": "Movies with high energy, stunts, and intense sequences.",
+  "popularMovies": [
+    "The Dark Knight",
+    "Mad Max: Fury Road",
+    "John Wick"
+  ],
+  "subGenres": [
+    "Martial Arts",
+    "Superhero",
+    "Adventure"
+  ]
+}
+
+### Remove a genre from collection
+DELETE https://cse341-node-project-2025-1.onrender.com/genres/67defd30b1ac9fc64c5831f2 
