@@ -11,5 +11,4 @@ router.use('/', moviesRoutes) // Now accessible at /movies
 // Routes for users
 router.use('/', genresRoutes) // Now accessible at /users
 
-
 module.exports = router

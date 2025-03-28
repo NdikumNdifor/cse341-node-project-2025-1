@@ -13,8 +13,8 @@ require('dotenv').config() // Load environment variables
 const port = process.env.PORT || 8080
 const app = express()
 
-const bodyParser = require('body-parser');
-const cors = require('cors'); 
+const bodyParser = require('body-parser')
+const cors = require('cors')
 
 app.use(bodyParser.json()).use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -25,7 +25,7 @@ app.use(cors()) // Enable CORS for all requests
 const swaggerUi = require('swagger-ui-express')
 const swaggerAutogen = require('swagger-autogen')
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerAutogen));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerAutogen))
 
 // Define routes
 app.get('/', (req, res) => {

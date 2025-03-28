@@ -11,21 +11,22 @@ router.use('/', require('./swagger'))
 router.get('/movies', moviesController.listAllMovies)
 
 // Routes to add a new movie
-router.post('/movies', 
-    utilities.createMovieRules(),
-    utilities.checkCreateMovieData, 
-    moviesController.insertAMovie
+router.post(
+  '/movies',
+  utilities.createMovieRules(),
+  utilities.checkCreateMovieData,
+  moviesController.insertAMovie
 )
 
 // Route to update a movie
-router.put('/movies/:id', 
-    utilities.createMovieRules(),
-    utilities.checkCreateMovieData, 
-    moviesController.modifyAMovie
+router.put(
+  '/movies/:id',
+  utilities.createMovieRules(),
+  utilities.checkCreateMovieData,
+  moviesController.modifyAMovie
 )
 
 // Route to delete a movie
 router.delete('/movies/:id', moviesController.removeAMovie)
-
 
 module.exports = router

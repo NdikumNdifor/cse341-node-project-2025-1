@@ -10,13 +10,13 @@ const doc = {
   definitions: {
     Movie: {
       // Define Movie schema
-      title: "Training Day",
-      director: "Antoine Fuqua",
+      title: 'Training Day',
+      director: 'Antoine Fuqua',
       releaseYear: 2001,
-      genre: "Crime, Thriller",
+      genre: 'Crime, Thriller',
       rating: 7.7,
       duration: 122,
-      cast: ["Denzel Washington", "Ethan Hawke", "Scott Glenn"],
+      cast: ['Denzel Washington', 'Ethan Hawke', 'Scott Glenn']
     }
   }
 }
@@ -32,13 +32,8 @@ swaggerAutogen(outputFile, endpointsFiles, doc)
 //     await import('./server.js')
 // })
 
-
-
-
-
 // const swaggerJSDoc = require('swagger-jsdoc');
 // const swaggerUi = require('swagger-ui-express');
-
 
 // const options = {
 //   definition: {
@@ -82,13 +77,9 @@ swaggerAutogen(outputFile, endpointsFiles, doc)
 
 // module.exports = { swaggerUi, swaggerSpec };
 
-
 // const swaggerSpec = swaggerJSDoc(options);
 
 // module.exports = { swaggerUi, swaggerSpec };
-
-
-
 
 // const swaggerJSDoc = require('swagger-jsdoc')
 
@@ -123,8 +114,6 @@ swaggerAutogen(outputFile, endpointsFiles, doc)
 // swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
 //     await import('./server.js')
 // })
-
-
 
 // const swaggerJSDoc = require('swagger-jsdoc');
 // const swaggerUi = require('swagger-ui-express');

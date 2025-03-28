@@ -7,19 +7,13 @@
   },
   "host": "cse341-node-project-2025-1.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/movies": {
       "get": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -30,13 +24,9 @@
         }
       },
       "post": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "201": {
             "description": "Created"
@@ -49,13 +39,9 @@
     },
     "/movies/{id}": {
       "put": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -107,13 +93,9 @@
         }
       },
       "delete": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -144,13 +126,9 @@
     },
     "/genres": {
       "get": {
-        "tags": [
-          "Genres"
-        ],
+        "tags": ["Genres"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK"
@@ -161,13 +139,9 @@
         }
       },
       "post": {
-        "tags": [
-          "Genres"
-        ],
+        "tags": ["Genres"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "201": {
             "description": "Created"
@@ -180,13 +154,9 @@
     },
     "/genres/{id}": {
       "put": {
-        "tags": [
-          "Genres"
-        ],
+        "tags": ["Genres"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -229,13 +199,9 @@
         }
       },
       "delete": {
-        "tags": [
-          "Genres"
-        ],
+        "tags": ["Genres"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -285,11 +251,7 @@
         },
         "cast": {
           "type": "array",
-          "example": [
-            "Denzel Washington",
-            "Ethan Hawke",
-            "Scott Glenn"
-          ],
+          "example": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"],
           "items": {
             "type": "string"
           }

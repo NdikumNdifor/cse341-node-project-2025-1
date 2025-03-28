@@ -1,5 +1,5 @@
-const {userModel} = require('./movieSchema-model')
-const { ObjectId } = require('mongodb');
+const { userModel } = require('./movieSchema-model')
+const { ObjectId } = require('mongodb')
 
 const getAllGenres = async () => {
   try {
@@ -14,60 +14,72 @@ const getAllGenres = async () => {
 }
 
 const addASingleGenre = async (objectData) => {
-  try{
-    const {genreName, description, popularMovies, subGenres  } = objectData
-    if(!genreName || !description || !popularMovies || !subGenres){
-    throw new Error('All the fields must be present')
+  try {
+    const { genreName, description, popularMovies, subGenres } = objectData
+    if (!genreName || !description || !popularMovies || !subGenres) {
+      throw new Error('All the fields must be present')
     }
     const result = await userModel.create(objectData)
     return result
-
-  }catch(err){
+  } catch (err) {
     throw new Error(err.message)
   }
 }
 
-
 const updateAGenre = async (userId, userData) => {
-  try{
-    if(!ObjectId.isValid(userId)){
+  try {
+    if (!ObjectId.isValid(userId)) {
       throw new Error('Your movie ID is incorrect')
     }
     // const {title, director, releaseYear, genre, rating, duration, cast} = movieData
-    const result = await userModel.findOneAndUpdate({ _id: new ObjectId(userId) }, { $set: userData }, {new: true})
-    if(result.matchedCount === 0){
-      return {message: 'No user was found with this ID'}
+    const result = await userModel.findOneAndUpdate(
+      { _id: new ObjectId(userId) },
+      { $set: userData },
+      { new: true }
+    )
+    if (result.matchedCount === 0) {
+      return { message: 'No user was found with this ID' }
     }
-    if(result.modifiedCount ===0){
-      return {message: 'No changes made, the contact data is already up to date.'}
+    if (result.modifiedCount === 0) {
+      return {
+        message: 'No changes made, the contact data is already up to date.'
+      }
     }
     return {
       message: 'Contact updated successfully',
       modifiedCount: result.modifiedCount
     }
-  }catch(err){
+  } catch (err) {
     console.error(err.message)
-    return {err: err.message}
+    return { err: err.message }
   }
 }
 
 const deleteAGenre = async (userId) => {
-  try{
-    if(!ObjectId.isValid(userId)){
+  try {
+    if (!ObjectId.isValid(userId)) {
       throw new Error('No contact found with the given ID')
     }
-    const result = await userModel.findOneAndDelete({_id: new ObjectId(userId)})
-    if(!result) {
+    const result = await userModel.findOneAndDelete({
+      _id: new ObjectId(userId)
+    })
+    if (!result) {
       throw new Error('No contact was deleted.')
     }
     return {
       message: 'Contact deleted succesfully',
       deletedUser: result
     }
-  }catch(err) {
+  } catch (err) {
     console.error(err.message)
-    return {error: err.message}
+    return { error: err.message }
   }
 }
 
-module.exports = { userModel, getAllGenres, addASingleGenre, updateAGenre, deleteAGenre}
+module.exports = {
+  userModel,
+  getAllGenres,
+  addASingleGenre,
+  updateAGenre,
+  deleteAGenre
+}
