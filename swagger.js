@@ -5,8 +5,8 @@ const doc = {
     title: 'Week03 CSE341 API Docs',
     description: 'Movie API Documentation'
   },
-  host: 'localhost:3000',
-  schemes: ['http'],
+  host: 'cse341-node-project-2025-1.onrender.com',
+  schemes: ['https'],
   definitions: {
     Movie: {
       // Define Movie schema
