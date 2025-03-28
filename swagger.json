@@ -37,17 +37,6 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Add a movie to list",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Movie"
-            }
-          }
-        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -77,10 +66,31 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Update a movie based on id",
-            "required": true,
             "schema": {
-              "$ref": "#/definitions/Movie"
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "director": {
+                  "example": "any"
+                },
+                "releaseYear": {
+                  "example": "any"
+                },
+                "genre": {
+                  "example": "any"
+                },
+                "rating": {
+                  "example": "any"
+                },
+                "duration": {
+                  "example": "any"
+                },
+                "cast": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
@@ -110,15 +120,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Delete a movie from list",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Movie"
-            }
           }
         ],
         "responses": {
@@ -167,17 +168,6 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Add a genres to list",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Genre"
-            }
-          }
-        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -207,10 +197,22 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Update a genre based on id",
-            "required": true,
             "schema": {
-              "$ref": "#/definitions/Genre"
+              "type": "object",
+              "properties": {
+                "genreName": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "popularMovies": {
+                  "example": "any"
+                },
+                "subGenres": {
+                  "example": "any"
+                }
+              }
             }
           }
         ],
@@ -240,15 +242,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Delete a user from list",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Genre"
-            }
           }
         ],
         "responses": {
