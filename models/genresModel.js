@@ -1,11 +1,11 @@
-const {MovieModel} = require('./movieSchema-model')
+const {userModel} = require('./movieSchema-model')
 const { ObjectId } = require('mongodb');
 
-const getAllMovies = async () => {
+const getAllUsers = async () => {
   try {
-    const result = await MovieModel.find()
+    const result = await userModel.find()
     if (!result || result.length === 0) {
-      throw new Error('Sorry, no movie was found.')
+      throw new Error('Sorry, no user was found.')
     }
     return result
   } catch (err) {
@@ -13,13 +13,13 @@ const getAllMovies = async () => {
   }
 }
 
-const addASingleMovie = async (objectData) => {
+const addASingleUser = async (objectData) => {
   try{
-    const {title, director, releaseYear, genre, rating, duration, cast } = objectData
-    if(!title || !director || !releaseYear || !genre || !rating || !duration || !cast){
+    const {genreName, description, popularMovies, subGenres  } = objectData
+    if(!genreName || !description || !popularMovies || !subGenres){
     throw new Error('All the fields must be present')
     }
-    const result = await MovieModel.create(objectData)
+    const result = await userModel.create(objectData)
     return result
 
   }catch(err){
@@ -28,15 +28,15 @@ const addASingleMovie = async (objectData) => {
 }
 
 
-const updateAMovie = async (movieId, movieData) => {
+const updateAUser = async (userId, userData) => {
   try{
-    if(!ObjectId.isValid(movieId)){
+    if(!ObjectId.isValid(userId)){
       throw new Error('Your movie ID is incorrect')
     }
     // const {title, director, releaseYear, genre, rating, duration, cast} = movieData
-    const result = await MovieModel.findOneAndUpdate({ _id: new ObjectId(movieId) }, { $set: movieData }, {new: true})
+    const result = await userModel.findOneAndUpdate({ _id: new ObjectId(userId) }, { $set: userData }, {new: true})
     if(result.matchedCount === 0){
-      return {message: 'No movie was found with this ID'}
+      return {message: 'No user was found with this ID'}
     }
     if(result.modifiedCount ===0){
       return {message: 'No changes made, the contact data is already up to date.'}
@@ -51,18 +51,18 @@ const updateAMovie = async (movieId, movieData) => {
   }
 }
 
-const deleteAMovie = async (movieId) => {
+const deleteAUser = async (userId) => {
   try{
-    if(!ObjectId.isValid(movieId)){
+    if(!ObjectId.isValid(userId)){
       throw new Error('No contact found with the given ID')
     }
-    const result = await MovieModel.findOneAndDelete({_id: new ObjectId(movieId)})
+    const result = await userModel.findOneAndDelete({_id: new ObjectId(userId)})
     if(!result) {
       throw new Error('No contact was deleted.')
     }
     return {
       message: 'Contact deleted succesfully',
-      deletedMovie: result
+      deletedUser: result
     }
   }catch(err) {
     console.error(err.message)
@@ -70,9 +70,4 @@ const deleteAMovie = async (movieId) => {
   }
 }
 
-module.exports = { MovieModel, getAllMovies, addASingleMovie, updateAMovie, deleteAMovie}
-
-
-
-
-
+module.exports = { userModel, getAllUsers, addASingleUser, updateAUser, deleteAUser}

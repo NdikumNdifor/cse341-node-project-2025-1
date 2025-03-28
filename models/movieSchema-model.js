@@ -18,6 +18,6 @@ const userSchema = new mongoose.Schema({
 })
 
 const MovieModel = mongoose.model('movies', movieSchema)
-const userModel = mongoose.model('users', userSchema)
+const userModel = mongoose.model('genres', userSchema)
 
 module.exports = {MovieModel, userModel}

@@ -1,4 +1,4 @@
-const moviesModel = require('../models/moviesModel')
+const {moviesModel} = require('../models/moviesModel')
 
 const listAllMovies = async (req, res) => {
   //#swagger.tags = ['Movies']
