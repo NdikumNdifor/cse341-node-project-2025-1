@@ -7,13 +7,19 @@
   },
   "host": "cse341-node-project-2025-1.onrender.com",
   "basePath": "/",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/movies": {
       "get": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -24,9 +30,24 @@
         }
       },
       "post": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a new movie",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Movie"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -39,9 +60,13 @@
     },
     "/movies/{id}": {
       "put": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -52,31 +77,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Edit a movie",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "director": {
-                  "example": "any"
-                },
-                "releaseYear": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "duration": {
-                  "example": "any"
-                },
-                "cast": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Movie"
             }
           }
         ],
@@ -93,9 +97,13 @@
         }
       },
       "delete": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -126,9 +134,13 @@
     },
     "/genres": {
       "get": {
-        "tags": ["Genres"],
+        "tags": [
+          "Genres"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -139,9 +151,24 @@
         }
       },
       "post": {
-        "tags": ["Genres"],
+        "tags": [
+          "Genres"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a new genre",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Genres"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -154,9 +181,13 @@
     },
     "/genres/{id}": {
       "put": {
-        "tags": ["Genres"],
+        "tags": [
+          "Genres"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -167,22 +198,10 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Add a new genre",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "genreName": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "popularMovies": {
-                  "example": "any"
-                },
-                "subGenres": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Genres"
             }
           }
         ],
@@ -199,9 +218,13 @@
         }
       },
       "delete": {
-        "tags": ["Genres"],
+        "tags": [
+          "Genres"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -251,7 +274,11 @@
         },
         "cast": {
           "type": "array",
-          "example": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"],
+          "example": [
+            "Denzel Washington",
+            "Ethan Hawke",
+            "Scott Glenn"
+          ],
           "items": {
             "type": "string"
           }

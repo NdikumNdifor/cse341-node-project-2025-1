@@ -14,6 +14,12 @@ const listAllGenres = async (req, res) => {
 
 const insertAGenre = async (req, res) => {
   //#swagger.tags = ['Genres']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Add a new genre',
+      required: true,
+      schema: { $ref: '#/definitions/Genres' }
+  } */
   try {
     const objectData = req.body
     const user = await userModel.addASingleGenre(objectData)
@@ -29,6 +35,12 @@ const insertAGenre = async (req, res) => {
 
 const modifyAGenre = async (req, res) => {
   //#swagger.tags = ['Genres']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Add a new genre',
+      required: true,
+      schema: { $ref: '#/definitions/Genres' }
+  } */
   try {
     const userId = req.params.id
     const userData = req.body
