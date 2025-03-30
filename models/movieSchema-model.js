@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
   cast: { type: [String], required: true }
 })
 
-const userSchema = new mongoose.Schema({
+const genreShcema = new mongoose.Schema({
   genreName: { type: String, required: true },
   description: { type: String, required: true },
   popularMovies: { type: [String], required: true, default: [] },
@@ -18,6 +18,6 @@ const userSchema = new mongoose.Schema({
 })
 
 const MovieModel = mongoose.model('movies', movieSchema)
-const userModel = mongoose.model('genres', userSchema)
+const userModel = mongoose.model('genres', genreShcema)
 
 module.exports = { MovieModel, userModel }
