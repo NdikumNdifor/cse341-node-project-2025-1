@@ -127,7 +127,7 @@ DELETE http://localhost:3000/genres/67defd30b1ac9fc64c5831f2
 // PRODUCTION
 // LOCALHOST
 
-// Get all genres
+### Get all genres
 GET https://cse341-node-project-2025-1.onrender.com/genres
 Accept: application/json
 

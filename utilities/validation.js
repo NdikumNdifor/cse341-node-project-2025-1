@@ -90,7 +90,7 @@ validate.checkCreateMovieData = (req, res, next) => {
 /* **********************************
  *  User Data Validation Rules
  * ********************************* */
-validate.createUserRules = () => {
+validate.creategenreRules = () => {
   return [
     // genreName is required and must be a string
     body('genreName')
@@ -133,7 +133,7 @@ validate.createUserRules = () => {
 /* ******************************
  * Check data and return errors or continue
  * ***************************** */
-validate.checkCreateUserData = (req, res, next) => {
+validate.checkCreategenreData = (req, res, next) => {
   const errors = validationResult(req)
   if (errors.isEmpty()) {
     return next()

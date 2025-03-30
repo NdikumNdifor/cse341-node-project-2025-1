@@ -13,16 +13,16 @@ router.get('/genres', genresController.listAllGenres)
 // Routes to add a new user
 router.post(
   '/genres',
-  utilities.createUserRules(),
-  utilities.checkCreateUserData,
+  utilities.creategenreRules(),
+  utilities.checkCreategenreData,
   genresController.insertAGenre
 )
 
 // Route to update a user
 router.put(
   '/genres/:id',
-  utilities.createUserRules(),
-  utilities.checkCreateUserData,
+  utilities.creategenreRules(),
+  utilities.checkCreategenreData,
   genresController.modifyAGenre
 )
 
