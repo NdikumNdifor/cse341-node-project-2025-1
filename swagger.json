@@ -10,6 +10,9 @@
   "schemes": [
     "https"
   ],
+  "consumes": [
+    "application/json"
+  ],
   "paths": {
     "/movies": {
       "get": {

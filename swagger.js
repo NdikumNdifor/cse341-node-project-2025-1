@@ -7,6 +7,7 @@ const doc = {
   },
   host: 'cse341-node-project-2025-1.onrender.com',
   schemes: ['https'],
+  consumes: ['application/json'],
   definitions: {
     Movie: {
       // Define Movie schema
