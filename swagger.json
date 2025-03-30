@@ -262,43 +262,7 @@
   "definitions": {
     "Movie": {
       "type": "object",
-      "properties": {
-        "title": {
-          "type": "string",
-          "example": "Training Day"
-        },
-        "director": {
-          "type": "string",
-          "example": "Antoine Fuqua"
-        },
-        "releaseYear": {
-          "type": "number",
-          "example": 2001
-        },
-        "genre": {
-          "type": "string",
-          "example": "Crime, Thriller"
-        },
-        "rating": {
-          "type": "number",
-          "example": 7.7
-        },
-        "duration": {
-          "type": "number",
-          "example": 122
-        },
-        "cast": {
-          "type": "array",
-          "example": [
-            "Denzel Washington",
-            "Ethan Hawke",
-            "Scott Glenn"
-          ],
-          "items": {
-            "type": "string"
-          }
-        }
-      }
+      "properties": {}
     }
   }
 }

@@ -10,14 +10,7 @@ const doc = {
   consumes: ['application/json'],
   definitions: {
     Movie: {
-      // Define Movie schema
-      title: 'Training Day',
-      director: 'Antoine Fuqua',
-      releaseYear: 2001,
-      genre: 'Crime, Thriller',
-      rating: 7.7,
-      duration: 122,
-      cast: ['Denzel Washington', 'Ethan Hawke', 'Scott Glenn']
+      
     }
   }
 }
