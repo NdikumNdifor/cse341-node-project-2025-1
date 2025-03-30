@@ -14,11 +14,12 @@ const listAllGenres = async (req, res) => {
 
 const insertAGenre = async (req, res) => {
   //#swagger.tags = ['Genres']
+  //#swagger.consumes = ['application/json']
   /* #swagger.parameters['body'] = {
       in: 'body',
-      description: 'Add a new genre',
+      description: 'Edit a genre',
       required: true,
-      schema: { $ref: '#/definitions/Genres' }
+      schema: { $ref: '#/definitions/Genre' }
   } */
   try {
     const objectData = req.body
@@ -35,11 +36,12 @@ const insertAGenre = async (req, res) => {
 
 const modifyAGenre = async (req, res) => {
   //#swagger.tags = ['Genres']
+  //#swagger.consumes = ['application/json']
   /* #swagger.parameters['body'] = {
       in: 'body',
-      description: 'Add a new genre',
+      description: 'Edit a genre',
       required: true,
-      schema: { $ref: '#/definitions/Genres' }
+      schema: { $ref: '#/definitions/Genre' }
   } */
   try {
     const userId = req.params.id

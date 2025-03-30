@@ -34,6 +34,9 @@
           "Movies"
         ],
         "description": "",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -41,7 +44,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Add a new movie",
+            "description": "Add a movie",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Movie"
@@ -64,6 +67,9 @@
           "Movies"
         ],
         "description": "",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -155,6 +161,9 @@
           "Genres"
         ],
         "description": "",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -162,10 +171,10 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Add a new genre",
+            "description": "Edit a genre",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Genres"
+              "$ref": "#/definitions/Genre"
             }
           }
         ],
@@ -185,6 +194,9 @@
           "Genres"
         ],
         "description": "",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -198,10 +210,10 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Add a new genre",
+            "description": "Edit a genre",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Genres"
+              "$ref": "#/definitions/Genre"
             }
           }
         ],

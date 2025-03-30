@@ -14,9 +14,10 @@ const listAllMovies = async (req, res) => {
 
 const insertAMovie = async (req, res) => {
   //#swagger.tags = ['Movies']
+  //#swagger.consumes = ['application/json']
   /* #swagger.parameters['body'] = {
       in: 'body',
-      description: 'Add a new movie',
+      description: 'Add a movie',
       required: true,
       schema: { $ref: '#/definitions/Movie' }
   } */
@@ -35,6 +36,7 @@ const insertAMovie = async (req, res) => {
 
 const modifyAMovie = async (req, res) => {
   //#swagger.tags = ['Movies']
+  //#swagger.consumes = ['application/json']
   /* #swagger.parameters['body'] = {
       in: 'body',
       description: 'Edit a movie',
