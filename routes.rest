@@ -17,6 +17,7 @@ Content-Type: application/json
   "cast": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"]
 }
 
+
 ### Modify a contact
 PUT http://localhost:3000/movies/67defd30b1ac9fc64c5831f2
 Content-Type: application/json
@@ -54,6 +55,7 @@ Content-Type: application/json
   "cast": ["Denzel Washington", "Ethan Hawke", "Scott Glenn"]
 }
 
+
 ### Modify a contact
 PUT https://cse341-node-project-2025-1.onrender.com/movies/67defd30b1ac9fc64c5831f2
 Content-Type: application/json
@@ -87,7 +89,7 @@ POST http://localhost:3000/genres
 Content-Type: application/json
 
 {
-  "genreName": "Action",
+  "genreName": "Adding a new genre to list" ,
   "description": "Movies with high energy, stunts, and intense sequences.",
   "popularMovies": [
     "The Dark Knight",
@@ -100,6 +102,8 @@ Content-Type: application/json
     "Adventure"
   ]
 }
+
+
 
 ### Modify a genres
 PUT http://localhost:3000/movies/67defd30b1ac9fc64c5831f2
