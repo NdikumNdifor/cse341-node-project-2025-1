@@ -17,7 +17,35 @@ const genreShcema = new mongoose.Schema({
   subGenres: { type: [String], required: true, default: [] }
 })
 
+const accountSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String }, // Only for manually registered users
+  googleId: { type: String }, // Only for Google OAuth users
+  displayName: { type: String }, // For OAuth users (Google, GitHub, etc.)
+  firstName: { type: String },
+  lastName: { type: String },
+  profileImage: { type: String }, // Optional: URL from OAuth provider
+  createdAt: { type: Date, default: Date.now },
+  accountType: {
+    type: String,
+    enum: ["Admin", "Client", "Employee"],
+    default: "Client",
+    required: true
+  }
+
+})
+
+// Ensure `password` is only required when NOT using OAuth
+accountSchema.pre("validate", function (next) {
+  if (!this.googleId && !this.password) {
+    next(new Error("Either password or googleId is required"));
+  } else {
+    next();
+  }
+});
+
 const MovieModel = mongoose.model('movies', movieSchema)
 const userModel = mongoose.model('genres', genreShcema)
+const AccountModel = mongoose.model('accounts', accountSchema)
 
-module.exports = { MovieModel, userModel }
+module.exports = { MovieModel, userModel, AccountModel }

@@ -25,6 +25,7 @@
   "homepage": "https://github.com/NdikumNdifor/cse341-node-project-2025-1#readme",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
