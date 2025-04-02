@@ -4,6 +4,9 @@ const router = express.Router()
 const genresController = require('../controllers/genresController')
 const utilities = require('../utilities/validation')
 
+// Require auth middleware
+const {isAuthenticated} = require('../middle-ware/authenticate')
+
 //Routes for Api documentation.
 router.use('/', require('./swagger'))
 
@@ -12,7 +15,7 @@ router.get('/genres', genresController.listAllGenres)
 
 // Routes to add a new user
 router.post(
-  '/genres',
+  '/genres', isAuthenticated,
   utilities.creategenreRules(),
   utilities.checkCreategenreData,
   genresController.insertAGenre
@@ -20,13 +23,13 @@ router.post(
 
 // Route to update a user
 router.put(
-  '/genres/:id',
+  '/genres/:id', isAuthenticated,
   utilities.creategenreRules(),
   utilities.checkCreategenreData,
   genresController.modifyAGenre
 )
 
 // Route to delete a user
-router.delete('/genres/:id', genresController.removeAGenre)
+router.delete('/genres/:id', isAuthenticated, genresController.removeAGenre)
 
 module.exports = router

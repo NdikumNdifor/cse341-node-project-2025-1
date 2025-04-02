@@ -18,9 +18,13 @@ const genreShcema = new mongoose.Schema({
 })
 
 const accountSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
+  email: { 
+    type: String, 
+    unique: true, 
+    required: function() { return !this.githubId; }  // Required if NOT a GitHub user
+    },
   password: { type: String }, // Only for manually registered users
-  googleId: { type: String }, // Only for Google OAuth users
+  githubId: { type: String }, // Only for Google OAuth users
   displayName: { type: String }, // For OAuth users (Google, GitHub, etc.)
   firstName: { type: String },
   lastName: { type: String },
@@ -37,7 +41,7 @@ const accountSchema = new mongoose.Schema({
 
 // Ensure `password` is only required when NOT using OAuth
 accountSchema.pre("validate", function (next) {
-  if (!this.googleId && !this.password) {
+  if (!this.githubId && !this.password) {
     next(new Error("Either password or googleId is required"));
   } else {
     next();
