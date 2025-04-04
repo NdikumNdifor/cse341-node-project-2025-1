@@ -2,9 +2,11 @@ const express = require('express')
 const passport = require('passport')
 const router = express.Router()
 
-router.get('/', (req, res) =>{res.send(req.session.user != undefined ? `Logged in as ${req.session.user.displayName}`: "Logged Out")})
+router.get('/', (req, res) =>{res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}`: "Logged Out")})
 
-router.get('/auth/github/callback', passport.authenticate('github', {
+// router.get('/github', passport.authenticate('github'))// troubleshoot
+
+router.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs', session: false}),
     (req, res) => {
         //When a user logs in, Passport stores the githubId in the session (serializeUser).
@@ -14,21 +16,8 @@ router.get('/auth/github/callback', passport.authenticate('github', {
         res.redirect('/')
     })
 
-router.get('/login', passport.authenticate('github'), (req, res) => {})
-
-router.get('/logout', (req, res) => {
-    req.logout(function(err){
-        if (err) return res.status(500).send("Error logging out.");
-        
-        // Destroy the session
-        req.session.destroy((err) => {
-            if (err) return res.status(500).send("Error ending session.");
-            res.redirect('/');
-        });
-    });
-});
-
-module.exports = router
+// router.get('/login', passport.authenticate('github'), (req, res) => {})
+router.get('/login', passport.authenticate('github'))
 
 // router.get('/logout', function(req, res, next){
 //     req.logout(function(err){
@@ -37,6 +26,22 @@ module.exports = router
 //     })
 // })
 
+router.get('/logout', (req, res) => {
+    req.logout(function(err){
+        if (err) return res.status(500).send("Error logging out.");
+        
+        // Destroy the session
+        req.session.destroy((err) => {
+            if (err) return res.status(500).send("Error ending session.");
+            console.log("Session stii lives!")
+
+            // res.clearCookie('connect.sid'); // Clear session cookie
+            res.redirect('/');
+        });
+    });
+});
+
+module.exports = router
 
 
 // function isLoggedIn(req, res, next){
@@ -57,4 +62,3 @@ module.exports = router
 // router.get('/auth/failure', (req, res) =>{
 //     res.send("Something went wrong..")
 // })
-

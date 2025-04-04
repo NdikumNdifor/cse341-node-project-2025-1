@@ -1,5 +1,5 @@
 const passport = require('passport')
-const GitHubStrategy = require('passport-github').Strategy;
+const GitHubStrategy = require('passport-github2').Strategy;
 const {AccountModel} = require('../models/movieSchema-model')
 
 passport.use(new GitHubStrategy({

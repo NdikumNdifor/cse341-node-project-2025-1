@@ -12,6 +12,8 @@ require('dotenv').config() // Load environment variables
 const session = require('express-session')
 const passport = require('passport')
 
+const MongoStore = require('connect-mongo');
+
 require('./auth-github/passport')
 
 // Start server
@@ -20,9 +22,13 @@ const app = express()
 
 // session middleware
 app.use(session({
-  secret: process.env.SESSION_SECRETE,
+  secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: "sessions"
+  }),
 }))
 // Passport middleware (has to be placed below session middleware)
 app.use(passport.initialize())

@@ -53,23 +53,23 @@ module.exports = {registerAccount}
 // The model validation will reject the request only after interacting with the database, which is unnecessary overhead.
 
 
-const MyOwnFunction = async (req, res) =>{
-    const registrationData = req.body
-    const email = registrationData.email
-    const password = registrationData.password
-    let hashedPassword
-    const firstName = registrationData.firstName
-    const lastName = registrationData.lastName
-    try {
-      // regular password and cost (salt is generated automatically)
-      hashedPassword = bcrypt.hashSync(password, 10)
-      const account = await registrationModel.addUserAccount({email, password: hashedPassword, firstName, lastName})
-      res.setHeader("Content-Type", "application/json")
-      res.status(201).json({message: "You succesfully created an account", account}) 
-    }catch (error){
-      //Missing validation for required field: If a required field is missing, the function will try to hash undefined, causing an error
-      // if (!email || !password || !firstName || !lastName) {
-      // return res.status(400).json({ message: "All fields must be filled." });
-      res.status(400).json({message: "Something went wrong.", error: error.message})// Note: Block should always return the actual message (error.message)
-    }  
-  }
+// const MyOwnFunction = async (req, res) =>{
+//     const registrationData = req.body
+//     const email = registrationData.email
+//     const password = registrationData.password
+//     let hashedPassword
+//     const firstName = registrationData.firstName
+//     const lastName = registrationData.lastName
+//     try {
+//       // regular password and cost (salt is generated automatically)
+//       hashedPassword = bcrypt.hashSync(password, 10)
+//       const account = await registrationModel.addUserAccount({email, password: hashedPassword, firstName, lastName})
+//       res.setHeader("Content-Type", "application/json")
+//       res.status(201).json({message: "You succesfully created an account", account}) 
+//     }catch (error){
+//       //Missing validation for required field: If a required field is missing, the function will try to hash undefined, causing an error
+//       // if (!email || !password || !firstName || !lastName) {
+//       // return res.status(400).json({ message: "All fields must be filled." });
+//       res.status(400).json({message: "Something went wrong.", error: error.message})// Note: Block should always return the actual message (error.message)
+//     }  
+//   }

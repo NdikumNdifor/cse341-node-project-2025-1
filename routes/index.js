@@ -5,7 +5,7 @@ const router = express.Router()
 const moviesRoutes = require('./moviesRoutes')
 const genresRoutes = require('./genresRoutes')
 const accountRoutes = require('./accountsRoutes')
-const authenticateRoute = require('./authenticationRoute')
+const authenticateRoute = require('./authenTicationRoute')
 
 // Routes for movies
 router.use('/', moviesRoutes) // Now accessible at /movies
@@ -17,6 +17,7 @@ router.use('/', genresRoutes) // Now accessible at /users
 router.use('/', accountRoutes)
 
 router.use('/', authenticateRoute)
+
 
 // 
 
