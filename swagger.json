@@ -13,6 +13,19 @@
   "consumes": [
     "application/json"
   ],
+
+  "securityDefinitions": {
+    "GitHubOAuth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://github.com/login/oauth/authorize",
+      "tokenUrl": "https://github.com/login/oauth/access_token",
+      "scopes": {
+        "user": "Grants access to user profile"
+      }
+    }
+  },
+  
   "paths": {
     "/movies": {
       "get": {
@@ -33,6 +46,11 @@
         }
       },
       "post": {
+        "security": [
+          {
+            "GitHubOAuth": ["user"]
+          }
+        ],
         "tags": [
           "Movies"
         ],
@@ -66,9 +84,15 @@
     },
     "/movies/{id}": {
       "put": {
+        "security": [
+          {
+            "GitHubOAuth": ["user"]
+          }
+        ],
         "tags": [
           "Movies"
         ],
+
         "description": "",
         "consumes": [
           "application/json"
@@ -106,6 +130,11 @@
         }
       },
       "delete": {
+        "security": [
+          {
+            "GitHubOAuth": ["user"]
+          }
+        ],
         "tags": [
           "Movies"
         ],
@@ -160,6 +189,11 @@
         }
       },
       "post": {
+        "security": [
+          {
+            "GitHubOAuth": ["user"]
+          }
+        ],
         "tags": [
           "Genres"
         ],
@@ -193,6 +227,11 @@
     },
     "/genres/{id}": {
       "put": {
+        "security": [
+          {
+            "GitHubOAuth": ["user"]
+          }
+        ],
         "tags": [
           "Genres"
         ],
@@ -233,6 +272,11 @@
         }
       },
       "delete": {
+        "security": [
+          {
+            "GitHubOAuth": ["user"]
+          }
+        ],
         "tags": [
           "Genres"
         ],

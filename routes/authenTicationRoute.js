@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.get('/', (req, res) =>{res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}`: "Logged Out")})
 
-// router.get('/github', passport.authenticate('github'))// troubleshoot
+// router.get('/auth/github', passport.authenticate('github'))// troubleshoot
 
 router.get('/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs', session: false}),

@@ -12,7 +12,22 @@ const doc = {
     Movie: {
       
     }
-  }
+  },
+
+  // You can use the below to apply Oauth Security to 
+  // your project and apply comment at your routes endpoint (Comments already added in routes and dont forget)
+  // to update swagger.js file by adding the endpoint Oauth end points file.
+  // securityDefinitions: {
+  //   GitHubOAuth: {
+  //     type: 'oauth2',
+  //     flow: 'accessCode',
+  //     authorizationUrl: 'https://github.com/login/oauth/authorize',
+  //     tokenUrl: 'https://github.com/login/oauth/access_token',
+  //     scopes: {
+  //       user: 'Grants access to user profile',
+  //     },
+  //   },
+  // },
 }
 
 const outputFile = './swagger.json'
