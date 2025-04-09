@@ -10,10 +10,61 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "GitHubOAuth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://github.com/login/oauth/authorize",
+      "tokenUrl": "https://github.com/login/oauth/access_token",
+      "scopes": {
+        "user": "Grants access to user profile"
+      }
+    }
+  },
   "consumes": [
     "application/json"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/github/callback": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "",
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/accounts": {
       "post": {
         "tags": [
@@ -69,6 +120,11 @@
         "tags": [
           "Movies"
         ],
+        "security": [
+        {
+          "GitHubOAuth": ["user"]
+        }
+      ],
         "description": "",
         "consumes": [
           "application/json"
@@ -105,6 +161,11 @@
         "tags": [
           "Movies"
         ],
+        "security": [
+        {
+          "GitHubOAuth": ["user"]
+        }
+      ],
         "description": "",
         "consumes": [
           "application/json"
@@ -148,6 +209,11 @@
         "tags": [
           "Movies"
         ],
+        "security": [
+        {
+          "GitHubOAuth": ["user"]
+        }
+      ],
         "description": "",
         "produces": [
           "application/json"
@@ -205,6 +271,11 @@
         "tags": [
           "Genres"
         ],
+        "security": [
+        {
+          "GitHubOAuth": ["user"]
+        }
+      ],
         "description": "",
         "consumes": [
           "application/json"
@@ -241,6 +312,11 @@
         "tags": [
           "Genres"
         ],
+        "security": [
+        {
+          "GitHubOAuth": ["user"]
+        }
+      ],
         "description": "",
         "consumes": [
           "application/json"
@@ -284,6 +360,11 @@
         "tags": [
           "Genres"
         ],
+        "security": [
+        {
+          "GitHubOAuth": ["user"]
+        }
+      ],
         "description": "",
         "produces": [
           "application/json"

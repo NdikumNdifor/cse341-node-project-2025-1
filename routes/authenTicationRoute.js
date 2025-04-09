@@ -17,15 +17,14 @@ router.get('/github/callback', passport.authenticate('github', {
     })
 
 // router.get('/login', passport.authenticate('github'), (req, res) => {})
+
+// #swagger.tags = ['Auth']
+// #swagger.description = 'GitHub OAuth login route.'
 router.get('/login', passport.authenticate('github'))
 
-// router.get('/logout', function(req, res, next){
-//     req.logout(function(err){
-//         if (err) {return next(err)}
-//         res.redirect('/')
-//     })
-// })
 
+// #swagger.tags = ['Auth']
+// #swagger.description = 'Logs the user out and destroys the session.'
 router.get('/logout', (req, res) => {
     req.logout(function(err){
         if (err) return res.status(500).send("Error logging out.");
@@ -43,6 +42,13 @@ router.get('/logout', (req, res) => {
 
 module.exports = router
 
+
+// router.get('/logout', function(req, res, next){
+//     req.logout(function(err){
+//         if (err) {return next(err)}
+//         res.redirect('/')
+//     })
+// })
 
 // function isLoggedIn(req, res, next){
 //     req.user? next() : res.status(401)
