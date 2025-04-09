@@ -11,6 +11,9 @@ const doc = {
   definitions: {
     Movie: {
       
+    },
+    Account: {
+      
     }
   },
 
@@ -31,7 +34,7 @@ const doc = {
 }
 
 const outputFile = './swagger.json'
-const endpointsFiles = ['./routes/moviesRoutes', './routes/genresRoutes', './routes/accountsRoutes']
+const endpointsFiles = ['./routes/accountsRoutes', './routes/moviesRoutes', './routes/genresRoutes']
 
 // Generate swagger.json file
 swaggerAutogen(outputFile, endpointsFiles, doc)

@@ -2,13 +2,13 @@ const registrationModel = require('../models/accountModels')
 const bcrypt = require('bcrypt')
 
 const registerAccount = async (req, res) => {
-  //#swagger.tags = ['Movies']
+  //#swagger.tags = ['Accounts']
   //#swagger.consumes = ['application/json']
   /* #swagger.parameters['body'] = {
       in: 'body',
-      description: 'Add a movie',
+      description: 'Create an account.',
       required: true,
-      schema: { $ref: '#/definitions/Movie' }
+      schema: { $ref: '#/definitions/Account' }
   } */
 
   try {

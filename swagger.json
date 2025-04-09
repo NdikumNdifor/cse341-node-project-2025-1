@@ -14,6 +14,39 @@
     "application/json"
   ],
   "paths": {
+    "/accounts": {
+      "post": {
+        "tags": [
+          "Accounts"
+        ],
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Create an account.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/movies": {
       "get": {
         "tags": [
@@ -275,43 +308,14 @@
           }
         }
       }
-    },
-    "/accounts": {
-      "post": {
-        "tags": [
-          "Movies"
-        ],
-        "description": "",
-        "consumes": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Add a movie",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Movie"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
     }
   },
   "definitions": {
     "Movie": {
+      "type": "object",
+      "properties": {}
+    },
+    "Account": {
       "type": "object",
       "properties": {}
     }

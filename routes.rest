@@ -175,3 +175,20 @@ Content-Type: application/json
 
 ### Remove a genre from collection
 DELETE https://cse341-node-project-2025-1.onrender.com/genres/67defd30b1ac9fc64c5831f2 
+
+
+## ENDPOINT FOR ACCOUNT COLLECTION
+
+// LOCAL HOST
+
+### Add an account
+POST https://localhost:3000/accounts
+
+{
+  "email": "sebastienndifor@gmail.com",
+  "password": "accountPassword",
+  "firstName": "Ndikum",
+  "lastName": "Ndifor"
+}
+
+
