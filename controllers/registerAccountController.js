@@ -2,29 +2,38 @@ const registrationModel = require('../models/accountModels')
 const bcrypt = require('bcrypt')
 
 const registerAccount = async (req, res) => {
-    try {
-        const { email, password, firstName, lastName } = req.body;
+  //#swagger.tags = ['Movies']
+  //#swagger.consumes = ['application/json']
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Add a movie',
+      required: true,
+      schema: { $ref: '#/definitions/Movie' }
+  } */
+
+  try {
+      const { email, password, firstName, lastName } = req.body;
       
-        if (!email || !password || !firstName || !lastName) {
-        return res.status(400).json({ error: "All fields must be filled" });
+      if (!email || !password || !firstName || !lastName) {
+      return res.status(400).json({ error: "All fields must be filled" });
+      }
+      // Hash the password
+      const hashedPassword = bcrypt.hashSync(password, 10);
+  
+      // Store user in DB
+      const account = await registrationModel.addUserAccount({
+      email,
+      password: hashedPassword, // Ensure the field name matches in `addUserAccount`
+      firstName,
+      lastName,
+      });
+      
+      if (account.err) {
+        return res.status(400).json({ error: account.err });
         }
-        // Hash the password
-        const hashedPassword = bcrypt.hashSync(password, 10);
-    
-        // Store user in DB
-        const account = await registrationModel.addUserAccount({
-        email,
-        password: hashedPassword, // Ensure the field name matches in `addUserAccount`
-        firstName,
-        lastName,
-        });
-      
-        if (account.err) {
-            return res.status(400).json({ error: account.err });
-          }
-          res.status(201).json({ message: "Account created successfully", account });
-        } catch (error) {
-          res.status(500).json({ error: error.message });
+        res.status(201).json({ message: "Account created successfully", account });
+      }catch (error) {
+        res.status(500).json({ error: error.message });
         }
 };
       

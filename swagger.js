@@ -31,7 +31,7 @@ const doc = {
 }
 
 const outputFile = './swagger.json'
-const endpointsFiles = ['./routes/moviesRoutes', './routes/genresRoutes']
+const endpointsFiles = ['./routes/moviesRoutes', './routes/genresRoutes', './routes/accountsRoutes']
 
 // Generate swagger.json file
 swaggerAutogen(outputFile, endpointsFiles, doc)

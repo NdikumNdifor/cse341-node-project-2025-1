@@ -13,19 +13,6 @@
   "consumes": [
     "application/json"
   ],
-
-  "securityDefinitions": {
-    "GitHubOAuth": {
-      "type": "oauth2",
-      "flow": "accessCode",
-      "authorizationUrl": "https://github.com/login/oauth/authorize",
-      "tokenUrl": "https://github.com/login/oauth/access_token",
-      "scopes": {
-        "user": "Grants access to user profile"
-      }
-    }
-  },
-  
   "paths": {
     "/movies": {
       "get": {
@@ -46,11 +33,6 @@
         }
       },
       "post": {
-        "security": [
-          {
-            "GitHubOAuth": ["user"]
-          }
-        ],
         "tags": [
           "Movies"
         ],
@@ -78,21 +60,18 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
     },
     "/movies/{id}": {
       "put": {
-        "security": [
-          {
-            "GitHubOAuth": ["user"]
-          }
-        ],
         "tags": [
           "Movies"
         ],
-
         "description": "",
         "consumes": [
           "application/json"
@@ -124,17 +103,15 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "security": [
-          {
-            "GitHubOAuth": ["user"]
-          }
-        ],
         "tags": [
           "Movies"
         ],
@@ -156,6 +133,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -189,11 +169,6 @@
         }
       },
       "post": {
-        "security": [
-          {
-            "GitHubOAuth": ["user"]
-          }
-        ],
         "tags": [
           "Genres"
         ],
@@ -221,17 +196,15 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
     },
     "/genres/{id}": {
       "put": {
-        "security": [
-          {
-            "GitHubOAuth": ["user"]
-          }
-        ],
         "tags": [
           "Genres"
         ],
@@ -266,17 +239,15 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "security": [
-          {
-            "GitHubOAuth": ["user"]
-          }
-        ],
         "tags": [
           "Genres"
         ],
@@ -298,6 +269,42 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add a movie",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Movie"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
